@@ -25,7 +25,8 @@
 		<h2>Latest items</h2>
 		{% for i in items %}
 		<div>
-			<a href="">{{ i.title }} </a>
+			{% set url = url_for('item_view', category=i.category.name, item=i.title) %}
+			<a href='{{ url | replace("%20", "-") }}'>{{ i.title }} </a>
 			<a href="">({{ i.category.name }})</a>
 		</div>
 		{% endfor %}

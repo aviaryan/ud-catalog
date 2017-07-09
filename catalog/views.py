@@ -65,6 +65,13 @@ def list_category(category):
     )
 
 
+@app.route('/catalog/<category>/<item>')
+def item_view(category, item):
+    title = item.replace('-', ' ')
+    item = Item.query.filter(Item.title == title).first()
+    return render_template('item_show.html', item=item, user=item.user)
+
+
 # ##########
 # AUTH VIEWS
 # ##########
