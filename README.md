@@ -72,3 +72,8 @@ This project uses flask-migrate and Alembic for database migrations. So no data 
 ## Notes
 
 The JSON format of the catalog can be accessed from `/catalog.json`.
+
+
+## Thanks
+
+* Google OAuth - http://bitwiser.in/2015/09/09/add-google-login-in-flask.html
