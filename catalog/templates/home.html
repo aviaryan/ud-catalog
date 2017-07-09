@@ -7,7 +7,7 @@
 		<h2>Categories</h2>
 		{% for c in categories %}
 		{% set url = url_for('list_category', category=c) %}
-		<a class="block-link" href="{{ url }}">{{ c }}</a>
+		<a class="block-link" href='{{ url | replace("%20", "-") }}'>{{ c }}</a>
 		{% endfor %}
 	</div>
 
