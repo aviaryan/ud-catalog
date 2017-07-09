@@ -51,3 +51,5 @@ python manage.py runserver
 
 Spaces in item name are converted to dashes in the url to make things look pretty. Example `http://localhost:5000/catalog/Slice-of-Life/Shigatsu-wa-kimi-no-uso`
 
+This project uses flask-migrate and Alembic for database migrations. So no data loss or manual upgrade of database when database models are changed.
+
