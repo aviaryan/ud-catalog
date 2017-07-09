@@ -51,6 +51,8 @@ python create_category.py
 python manage.py runserver
 ```
 
+* Access on `http://localhost:5000`.
+
 
 <a name="oauth"></a>
 ## Generating Google OAuth credentials
