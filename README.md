@@ -58,3 +58,7 @@ Spaces in item name are converted to dashes in the url to make things look prett
 
 This project uses flask-migrate and Alembic for database migrations. So no data loss or manual upgrade of database when database models are changed.
 
+
+## Notes
+
+The JSON format of the catalog can be accessed from `/catalog.json`.

@@ -72,6 +72,7 @@ def list_category(category):
     """
     lists items in a specific category
     """
+    # spaces were replaced by dashes to make urls look better
     category = category.replace('-', ' ')
     # thanks https://stackoverflow.com/questions/4985762/
     items = Item.query.join(Category).filter(Category.name == category)\
@@ -99,6 +100,7 @@ def edit_item(category, item_id):
     """
     shows edit page for a specific item
     """
+    # authorization check
     if is_not_authorized(item_id):
         return render_template('unauthorized.html')
     item = Item.query.get(int(item_id))
@@ -113,6 +115,7 @@ def save_item(item_id):
     """
     saves an item after edit
     """
+    # authorization check
     if is_not_authorized(item_id):
         return render_template('unauthorized.html')
     form = request.form
@@ -132,6 +135,7 @@ def delete_item(category, item_id):
     shows delete page for an item
     Also implements the backend logic to actually delete it
     """
+    # authorization check
     if is_not_authorized(item_id):
         return render_template('unauthorized.html')
     if request.method == 'GET':
