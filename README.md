@@ -22,6 +22,8 @@ Also, no unauthenticated user has the right to make changes to the database.
 
 Tested on **Python 3**.
 
+* Create Google OAuth credentials. See the [next section](#oauth) for this.
+
 * Install requirements.
 
 ```sh
@@ -33,7 +35,8 @@ pip install -r requirements.txt
 ```sh
 # python manage.py db init     # init migrations folder at project start
 # python manage.py db migrate  # generate migration files in case of model change
-python manage.py db upgrade  # upgrade database
+# ^^ the above two commands required in development. Not required when running this project for the first time.
+python manage.py db upgrade  # upgrade/create database
 ```
 
 * Create initial categories.
@@ -49,13 +52,14 @@ python manage.py runserver
 ```
 
 
-## Generating Google OAuth token
+<a name="oauth"></a>
+## Generating Google OAuth credentials
 
 * Create a project on [developers.google.com](https://console.developers.google.com/).
-* Go to Credentials. Then select "Add Credentials" -> "OAuth (v2) token".
+* Go to Credentials. Then select "Add Credentials" -> "OAuth (v2) token". Choose `Web` as the type.
 * In the next page, make sure you have `http://localhost:5000` in authorized JavaScript origins and `http://localhost:5000/gCallback` in Redirect URIs.
 * Get your client ID and client secret.
-* Put it in `config.py`.
+* Put it in [config.py](config.py).
 
 
 ## Extra features
