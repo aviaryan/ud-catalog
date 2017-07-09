@@ -9,13 +9,18 @@ def get_google_auth(state=None, token=None):
     get_google_auth creates an oauth object for google oauth
     Thanks http://bitwiser.in/2015/09/09/add-google-login-in-flask.html
     """
+    # if token from server is available, just use it
+    # we can now fetch user info from google
     if token:
         return OAuth2Session(Auth.CLIENT_ID, token=token)
+    # if state is set (& token is not), create an OAuth session to fetch token
     if state:
         return OAuth2Session(
             Auth.CLIENT_ID,
             state=state,
             redirect_uri=Auth.REDIRECT_URI)
+    # neither token nor state is set
+    # start a new oauth session
     oauth = OAuth2Session(
         Auth.CLIENT_ID,
         redirect_uri=Auth.REDIRECT_URI,
@@ -26,6 +31,8 @@ def get_google_auth(state=None, token=None):
 def categories_to_json(categories):
     """
     categories_to_json converts categories SQLAlchemy object to json object
+    works by simply looping over collection of objects and manually mapping
+    each Object key to a native Python dict
     """
     main = {}
     main['categories'] = []

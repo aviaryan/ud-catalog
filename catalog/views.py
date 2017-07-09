@@ -183,7 +183,7 @@ def callback():
         if request.args.get('error') == 'access_denied':
             return 'Access denied by user'
         # some unknown error occured
-        return 'Error encountered.'
+        return 'Some error has occured. Please try again'
     # missing state information in the callback
     # something went wrong, login again
     if 'code' not in request.args and 'state' not in request.args:
@@ -196,8 +196,8 @@ def callback():
             Auth.TOKEN_URI,
             client_secret=Auth.CLIENT_SECRET,
             authorization_response=request.url)
-    except HTTPError:
-        return 'HTTPError occurred.'
+    except HTTPError as e:
+        return 'HTTPError occurred: ' + str(e)
     # get handler for server token
     google = get_google_auth(token=token)
     # get user info now that we have token for user
@@ -219,7 +219,7 @@ def callback():
         # login user now using flask_login
         login_user(user)
         return redirect(url_for('index'))
-    return 'Could not fetch your information.'
+    return 'Error when fetching user information from Google'
 
 
 @app.route('/logout')

@@ -14,13 +14,14 @@ app = Flask(__name__)
 # default values
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+# set database uri for SQLAlchemy
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' \
     + os.path.join(basedir, '../database.sqlite3')
 
 app.config['CSRF_ENABLED'] = True
 app.secret_key = 'no one can guess this'
-os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+# enable debug for auto reloads
 app.debug = True
 
 # login manager
@@ -30,7 +31,7 @@ login_manager.login_view = "login"
 # database
 db = SQLAlchemy(app)
 
-# down to resolve circular imports
+# these imports listed below to resolve circular imports
 import catalog.views
 import catalog.models
 from catalog.models import User
@@ -38,16 +39,28 @@ from catalog.models import User
 
 @login_manager.user_loader
 def load_user(user_id):
+    """
+    user loader for flask_login
+    This method helps flask_login to fetch current user
+    """
     return User.query.get(int(user_id))
 
 
 @login_manager.unauthorized_handler
 def unauthorized():
+    """
+    This function implements what happens when an authenticated
+    route is called and user is not authenticated
+    """
     return render_template('unauthorized.html', not_logged_in=True)
 
 
 @app.before_request
 def set_login_status():
+    """
+    set current login status
+    Used in jinja templates
+    """
     if current_user.is_authenticated:
         g.logged_in = True
     else:
