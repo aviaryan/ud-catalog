@@ -21,8 +21,8 @@
 
 		<div class="vertical-space"></div>
 
-		<a class="bar-btn" href="{{ g.auth_uri }}">
-		{{ g.button_text }}
+		<a class="bar-btn" href="{% if g.logged_in %}{{ url_for('logout') }}{% else %}{{ url_for('login') }}{% endif %}">
+		{% if g.logged_in %}Logout{% else %}Login{% endif %}
 		</a>
 	</div>
 </header>
