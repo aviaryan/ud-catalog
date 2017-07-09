@@ -2,3 +2,5 @@ Flask==0.12.2
 SQLAlchemy==1.1.11
 Flask-SQLAlchemy==2.2
 Flask-Migrate==2.0.4
+Flask-Login==0.4.0
+requests-oauthlib==0.8.0
