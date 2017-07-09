@@ -34,3 +34,4 @@ python manage.py runserver
 * Click on Credentials -> OAuth token.
 * Make sure you have `http://localhost:5000` in authorized JavaScript origins and `http://localhost:5000/gCallback` in Redirect URIs.
 * Get your client ID and client secret.
+* Put it in `config.py`.

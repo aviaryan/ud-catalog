@@ -32,6 +32,7 @@ header {
 	color: white;
 	font-size: 1.3em;
 	padding: 0.4em 0.4em 0.4em 0.4em;
+	text-decoration: none;
 }
 
 div.content {

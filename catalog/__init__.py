@@ -1,8 +1,8 @@
 import os
 
-from flask import Flask
+from flask import Flask, g, url_for
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager
+from flask_login import LoginManager, current_user
 
 # allow http transport
 # (https requires ssl keys, not good for local testing)
@@ -42,3 +42,13 @@ from catalog.models import User
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
+
+@app.before_request
+def before_request():
+    if current_user.is_authenticated:
+        g.auth_uri = url_for('logout')
+        g.button_text = 'Logout'
+        return
+    g.auth_uri = url_for('login')
+    g.button_text = 'Login'
