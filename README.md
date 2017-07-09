@@ -7,13 +7,13 @@ Each user is the owner of the items they have added and no other user can modify
 Also, no unauthenticated user has the right to make changes to the database.
 
 
-## Screenshot
+## Screenshots
 
-##### Main page with login
+#### Main page with login
 
 ![Main page with login](https://i.imgur.com/7YyNFxR.png)
 
-##### Category page without login
+#### Category page without login
 
 ![Category page without login](https://i.imgur.com/DIRASWq.png)
 
