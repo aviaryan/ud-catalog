@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, g, url_for
+from flask import Flask, g, url_for, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, current_user
 
@@ -42,6 +42,11 @@ from catalog.models import User
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
+
+@login_manager.unauthorized_handler
+def unauthorized():
+    return render_template('unauthorized.html')
 
 
 @app.before_request
