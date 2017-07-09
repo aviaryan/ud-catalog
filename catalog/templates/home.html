@@ -1,1 +1,23 @@
 {% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+	<div id="left-bar">
+		<h2>Categories</h2>
+		{% for c in categories %}
+		<a class="block-link">{{ c }}</a>
+		{% endfor %}
+	</div>
+
+	<div class="vertical-space"></div>
+	<div class="vertical-space"></div>
+
+	<div id="line-seg">
+	</div>
+
+	<div id="right-side">
+	</div>
+</div>
+
+{% endblock %}

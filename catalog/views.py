@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 
 from catalog import app, db
 from flask_login import current_user, login_user, login_required, logout_user
@@ -8,12 +9,13 @@ from requests.exceptions import HTTPError
 
 from config import Auth
 from catalog.helpers import get_google_auth, categories_to_json
-from catalog.models import User, Category
+from catalog.models import User, Category, Item
 
 
 @app.route('/')
 def index():
-    return render_template('home.html')
+    categories = [c.name for c in Category.query.all()]
+    return render_template('home.html', categories=categories)
 
 
 @app.errorhandler(404)
@@ -25,6 +27,33 @@ def page_not_found(error):
 def get_catalog():
     catalog = Category.query.all()
     return jsonify(categories_to_json(catalog))
+
+
+@app.route('/new')
+def new_item():
+    return render_template(
+        'item_form.html', item=Item(), categories=Category.query.all(),
+        target_url=url_for('new_item_save'))
+
+
+@login_required
+@app.route('/new', methods=['POST'])
+def new_item_save():
+    form = request.form
+    item = Item()
+    item.category_id = int(form['category'])
+    item.title = form['title']
+    item.description = form['description']
+    item.created_at = datetime.now()
+    item.user_id = current_user.id
+    db.session.add(item)
+    db.session.commit()
+    return redirect(url_for('index'))
+
+
+# ##########
+# AUTH VIEWS
+# ##########
 
 
 @app.route('/login')

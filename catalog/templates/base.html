@@ -9,20 +9,31 @@
 <header>
 	<div id="heading">
 		<span class="heading-name">
-		Catalog App
+		<a href="/">Catalog App</a>
 		</span>
 
-		<a class="acc-btn" href="{{ g.auth_uri }}">
+		<span class="row-space"></span>
+
+		<a class="bar-btn" href="{{ url_for('new_item') }}">
+		New
+		</a>
+
+		<div class="vertical-space"></div>
+
+		<a class="bar-btn" href="{{ g.auth_uri }}">
 		{{ g.button_text }}
 		</a>
 	</div>
 </header>
 
 <div class="content">
-{% block content %}
-	<h1>The title</h1>
-	Edit me
-{% endblock %}
+	<!-- this allows to bypass issue where padding inflates `content` -->
+	<div class="content-2">
+	{% block content %}
+		<h1>The title</h1>
+		Edit me
+	{% endblock %}
+	</div>
 </div>
 
 </body>

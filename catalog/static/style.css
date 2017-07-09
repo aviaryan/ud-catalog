@@ -17,15 +17,15 @@ header {
 	padding: 0.7em 0 0.7em 0;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
 }
 
-#heading .heading-name {
+#heading .heading-name a {
 	color: white;
 	font-size: 2.5em;
+	text-decoration: none;
 }
 
-#heading .acc-btn {
+#heading .bar-btn {
 	align-self: flex-end;
 	justify-content: center;
 	background-color: #D03124;
@@ -38,8 +38,14 @@ header {
 div.content {
 	max-width: 1000px;
 	margin: 2em auto 0 auto;
-	padding: 0.7em 0.7em 0.7em 0.7em;
 	background-color: white;
+}
+
+div.content-2 {
+	width: 100%;
+	height: 100%;
+	margin: 0 1.5em 0 1.5em;
+	padding: 1em 0 1.5em 0;
 }
 
 h1, h2 {
@@ -48,4 +54,38 @@ h1, h2 {
 
 a {
 	color: #D03124;
+}
+
+div.row {
+	display: flex;
+	flex-direction: row;
+}
+
+#left-bar {
+	display: inline-block;
+	height: 100%;
+}
+
+a.block-link {
+	display: block;
+	color: #D03124;
+}
+
+/**
+ * Utility Classes
+ */
+
+div.vertical-space {
+	align-self: stretch;
+	width: 1em;
+}
+
+.row-space {
+	flex-grow: 1000;
+}
+
+#line-seg {
+	align-self: stretch;
+	width: 1px;
+	background-color: #494949;
 }

@@ -45,7 +45,7 @@ def load_user(user_id):
 
 
 @app.before_request
-def before_request():
+def set_login_status():
     if current_user.is_authenticated:
         g.auth_uri = url_for('logout')
         g.button_text = 'Logout'
