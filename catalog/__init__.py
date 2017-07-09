@@ -54,6 +54,8 @@ def set_login_status():
     if current_user.is_authenticated:
         g.auth_uri = url_for('logout')
         g.button_text = 'Logout'
+        g.logged_in = True
         return
     g.auth_uri = url_for('login')
     g.button_text = 'Login'
+    g.logged_in = False

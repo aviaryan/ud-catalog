@@ -14,9 +14,9 @@
 
 		<span class="row-space"></span>
 
-		<a class="bar-btn" href="{{ url_for('new_item') }}">
-		New
-		</a>
+		{% if g.logged_in %}
+			<a class="bar-btn" href="{{ url_for('new_item') }}">New</a>
+		{% endif %}
 
 		<div class="vertical-space"></div>
 
