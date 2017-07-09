@@ -38,6 +38,7 @@ header {
 div.content {
 	max-width: 1000px;
 	margin: 2em auto 0 auto;
+	border: 1px solid gray;
 	background-color: white;
 }
 
@@ -96,7 +97,7 @@ div.vertical-space {
 #line-seg {
 	align-self: stretch;
 	width: 1px;
-	background-color: #494949;
+	background-color: gray;
 }
 
 /*
