@@ -8,7 +8,7 @@ body {
 }
 
 header {
-	background-color: #0B1631;
+	background-color: #1a3067;
 }
 
 #heading {
@@ -37,6 +37,14 @@ header {
 div.content {
 	max-width: 1000px;
 	margin: 2em auto 0 auto;
-	padding: 0.7em 0.5em 0.7em 0.5em;
+	padding: 0.7em 0.7em 0.7em 0.7em;
 	background-color: white;
+}
+
+h1, h2 {
+	color: #1a3067;
+}
+
+a {
+	color: #D03124;
 }
