@@ -22,7 +22,7 @@ Also, no unauthenticated user has the right to make changes to the database.
 
 Tested on **Python 3**.
 
-* Create Google OAuth credentials. See the [next section](#oauth) for this.
+* Set Google OAuth credentials. See the [next section](#oauth) for this.
 
 * Install requirements.
 
