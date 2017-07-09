@@ -7,6 +7,11 @@ Each user is the owner of the items they have added and no other user can modify
 Also, no unauthenticated user has the right to make changes to the database.
 
 
+## Screenshot
+
+![Main page](https://i.imgur.com/9542Fnt.png)
+
+
 ## Running instructions
 
 Tested on **Python 3**.
