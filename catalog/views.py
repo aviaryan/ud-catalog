@@ -59,7 +59,8 @@ def new_item_save():
 def list_category(category):
     category = category.replace('-', ' ')
     # thanks https://stackoverflow.com/questions/4985762/
-    items = Item.query.join(Category).filter(Category.name == category).all()
+    items = Item.query.join(Category).filter(Category.name == category)\
+        .order_by(desc(Item.id)).all()
     return render_template(
         'category.html', category=category, items=items,
         categories=get_category_list()
