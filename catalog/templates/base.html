@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Catalog App</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+
+<header>
+	<div id="heading">
+		<span class="heading-name">
+		Catalog App
+		</span>
+
+		<span class="acc-btn">
+		Login
+		</span>
+	</div>
+</header>
+
+<div class="content">
+{% block content %}
+	Edit me
+{% endblock %}
+</div>
+
+</body>
+</html>
