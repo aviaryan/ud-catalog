@@ -1,5 +1,6 @@
 from requests_oauthlib import OAuth2Session
 from config import Auth
+from catalog.models import Category
 
 
 def get_google_auth(state=None, token=None):
@@ -40,3 +41,10 @@ def categories_to_json(categories):
             catDict['items'].append(itemDict)
         main['categories'].append(catDict)
     return main
+
+
+def get_category_list():
+    """
+    get_category_list returns list of categories
+    """
+    return [c.name for c in Category.query.all()]

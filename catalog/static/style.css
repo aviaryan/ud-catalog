@@ -54,6 +54,7 @@ h1, h2 {
 
 a {
 	color: #D03124;
+	text-decoration: none;
 }
 
 div.row {

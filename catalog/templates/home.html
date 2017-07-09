@@ -6,7 +6,8 @@
 	<div id="left-side">
 		<h2>Categories</h2>
 		{% for c in categories %}
-		<a class="block-link">{{ c }}</a>
+		{% set url = url_for('list_category', category=c) %}
+		<a class="block-link" href="{{ url }}">{{ c }}</a>
 		{% endfor %}
 	</div>
 
@@ -20,6 +21,7 @@
 	<div class="vertical-space"></div>
 
 	<div id="right-side">
+		{% block rightside %}
 		<h2>Latest items</h2>
 		{% for i in items %}
 		<div>
@@ -27,7 +29,9 @@
 			<a href="">({{ i.category.name }})</a>
 		</div>
 		{% endfor %}
+		{% endblock %}
 	</div>
+
 </div>
 
 {% endblock %}

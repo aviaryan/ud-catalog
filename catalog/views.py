@@ -9,15 +9,16 @@ from flask import render_template, redirect, url_for, session, request,\
 from requests.exceptions import HTTPError
 
 from config import Auth
-from catalog.helpers import get_google_auth, categories_to_json
+from catalog.helpers import get_google_auth, categories_to_json, \
+    get_category_list
 from catalog.models import User, Category, Item
 
 
 @app.route('/')
 def index():
-    categories = [c.name for c in Category.query.all()]
     items = Item.query.order_by(desc(Item.id)).limit(10).all()
-    return render_template('home.html', categories=categories, items=items)
+    return render_template(
+        'home.html', categories=get_category_list(), items=items)
 
 
 @app.errorhandler(404)
@@ -51,6 +52,17 @@ def new_item_save():
     db.session.add(item)
     db.session.commit()
     return redirect(url_for('index'))
+
+
+@app.route('/catalog/<category>')
+def list_category(category):
+    category = category.replace('-', ' ')
+    # thanks https://stackoverflow.com/questions/4985762/
+    items = Item.query.join(Category).filter(Category.name == category).all()
+    return render_template(
+        'category.html', category=category, items=items,
+        categories=get_category_list()
+    )
 
 
 # ##########

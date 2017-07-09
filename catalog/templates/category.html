@@ -1,0 +1,7 @@
+{% extends "home.html" %}
+{% block rightside %}
+	<h2>{{ category }}</h2>
+	{% for i in items %}
+		<a class="block-link" href="">{{ i.title }}</a>
+	{% endfor %}
+{% endblock %}
