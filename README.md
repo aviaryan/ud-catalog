@@ -9,7 +9,13 @@ Also, no unauthenticated user has the right to make changes to the database.
 
 ## Screenshot
 
-![Main page](https://i.imgur.com/9542Fnt.png)
+##### Main page with login
+
+![Main page with login](https://i.imgur.com/7YyNFxR.png)
+
+##### Category page without login
+
+![Category page without login](https://i.imgur.com/DIRASWq.png)
 
 
 ## Running instructions
