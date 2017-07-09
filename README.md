@@ -21,6 +21,12 @@ python manage.py db migrate  # generate pending migration files
 python manage.py db upgrade  # upgrade database
 ```
 
+* Create initial categories.
+
+```sh
+python create_category.py
+```
+
 * Start server.
 
 ```sh
