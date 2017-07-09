@@ -27,7 +27,7 @@
 		<div>
 			{% set url = url_for('item_view', category=i.category.name, item=i.title) %}
 			<a href='{{ url | replace("%20", "-") }}'>{{ i.title }} </a>
-			<a href="">({{ i.category.name }})</a>
+			<span class="faded">({{ i.category.name }})</span>
 		</div>
 		{% endfor %}
 		{% endblock %}

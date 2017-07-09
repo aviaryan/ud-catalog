@@ -32,16 +32,16 @@ def get_catalog():
     return jsonify(categories_to_json(catalog))
 
 
-@login_required
 @app.route('/new')
+@login_required
 def new_item():
     return render_template(
         'item_form.html', item=Item(), categories=Category.query.all(),
         target_url=url_for('new_item_save'))
 
 
-@login_required
 @app.route('/new', methods=['POST'])
+@login_required
 def new_item_save():
     form = request.form
     item = Item()
@@ -73,8 +73,8 @@ def item_view(category, item):
     return render_template('item_show.html', item=item, user=item.user)
 
 
-@login_required
 @app.route('/catalog/<category>/<item_id>/edit')
+@login_required
 def edit_item(category, item_id):
     item = Item.query.get(int(item_id))
     return render_template(
@@ -82,8 +82,8 @@ def edit_item(category, item_id):
         target_url=url_for('save_item', item_id=item.id))
 
 
-@login_required
 @app.route('/catalog/<item_id>/save', methods=['POST'])
+@login_required
 def save_item(item_id):
     form = request.form
     item = Item.query.get(int(item_id))
@@ -95,8 +95,8 @@ def save_item(item_id):
     return redirect(url_for('index'))
 
 
-@login_required
 @app.route('/catalog/<category>/<item_id>/delete', methods=['GET', 'POST'])
+@login_required
 def delete_item(category, item_id):
     if request.method == 'GET':
         item = Item.query.get(int(item_id))
