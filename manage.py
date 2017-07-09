@@ -3,6 +3,7 @@ from flask_migrate import Migrate, MigrateCommand
 
 from catalog import app, db
 
+# setup migrations using alembic
 migrate = Migrate(app, db)
 manager = Manager(app)
 

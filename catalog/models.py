@@ -5,7 +5,7 @@ from flask_login import UserMixin
 
 class User(db.Model, UserMixin):
     """
-    User class
+    User model to store app users
     """
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
 
 class Category(db.Model):
     """
-    Category class
+    Category model to store different categories
     """
     __tablename__ = "category"
     id = db.Column(db.Integer, primary_key=True)
@@ -27,7 +27,8 @@ class Category(db.Model):
 
 class Item(db.Model):
     """
-    Item class
+    Item model stores individual items and links them
+    to category and user
     """
     __tablename__ = "item"
     id = db.Column(db.Integer, primary_key=True)

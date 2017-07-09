@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, g, url_for, render_template
+from flask import Flask, g, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, current_user
 
@@ -10,9 +10,6 @@ os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 # init flask app
 app = Flask(__name__)
-
-# base config
-# app.config.from_object('config.Config')
 
 # default values
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -33,7 +30,7 @@ login_manager.login_view = "login"
 # database
 db = SQLAlchemy(app)
 
-# down for circular imports
+# down to resolve circular imports
 import catalog.views
 import catalog.models
 from catalog.models import User

@@ -25,7 +25,7 @@ def get_google_auth(state=None, token=None):
 
 def categories_to_json(categories):
     """
-    categories_to_json converts categories to json
+    categories_to_json converts categories SQLAlchemy object to json object
     """
     main = {}
     main['categories'] = []
@@ -46,7 +46,7 @@ def categories_to_json(categories):
 
 def get_category_list():
     """
-    get_category_list returns list of categories
+    get_category_list returns list of all categories
     """
     return [c.name for c in Category.query.all()]
 
@@ -54,6 +54,7 @@ def get_category_list():
 def is_not_authorized(item_id):
     """
     is_not_authorized checks if user is not authorized to access a page
+    This means he is not the one who created that item
     """
     item = Item.query.get(int(item_id))
     return item.user.id != current_user.id

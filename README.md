@@ -45,3 +45,9 @@ python manage.py runserver
 * In the next page, make sure you have `http://localhost:5000` in authorized JavaScript origins and `http://localhost:5000/gCallback` in Redirect URIs.
 * Get your client ID and client secret.
 * Put it in `config.py`.
+
+
+## Extra features
+
+Spaces in item name are converted to dashes in the url to make things look pretty. Example `http://localhost:5000/catalog/Slice-of-Life/Shigatsu-wa-kimi-no-uso`
+

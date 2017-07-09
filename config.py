@@ -1,4 +1,8 @@
 class Auth:
+    """
+    Auth class contains details for flow used in OAuth authentication
+    using Google
+    """
     CLIENT_ID = ('153367843910-6trc0vmgk73pqsu61fou4a4npbckf94u'
                  '.apps.googleusercontent.com')
     CLIENT_SECRET = 'cTmDcWFQk_kFaLV5q17Wleb3'
