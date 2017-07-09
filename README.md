@@ -5,7 +5,7 @@ Udacity FSND project
 
 ## Running instructions
 
-Please make sure you use **Python 3**.
+Tested on **Python 3**.
 
 * Install requirements.
 
@@ -16,8 +16,8 @@ pip install -r requirements.txt
 * Setup database.
 
 ```sh
-python manage.py db init     # init migrations folder
-python manage.py db migrate  # generate pending migration files
+# python manage.py db init     # init migrations folder at project start
+# python manage.py db migrate  # generate migration files in case of model change
 python manage.py db upgrade  # upgrade database
 ```
 
