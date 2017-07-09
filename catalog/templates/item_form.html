@@ -18,7 +18,7 @@
 	<label for="category">Category</label><br>
 	<select name="category" id="category">
 	{% for c in categories %}
-		<option value="{{ c.id }}">{{ c.name }}</option>
+		<option value="{{ c.id }}" {% if item.category_id == c.id %}selected{% endif %}>{{ c.name }}</option>
 	{% endfor %}
 	</select>
 
