@@ -19,3 +19,24 @@ def get_google_auth(state=None, token=None):
         redirect_uri=Auth.REDIRECT_URI,
         scope=Auth.SCOPE)
     return oauth
+
+
+def categories_to_json(categories):
+    """
+    categories_to_json converts categories to json
+    """
+    main = {}
+    main['categories'] = []
+    for cat in categories:
+        catDict = {}
+        catDict['id'] = cat.id
+        catDict['name'] = cat.name
+        catDict['items'] = []
+        for item in cat.items:
+            itemDict = {}
+            itemDict['id'] = item.id
+            itemDict['title'] = item.title
+            itemDict['description'] = item.description
+            catDict['items'].append(itemDict)
+        main['categories'].append(catDict)
+    return main

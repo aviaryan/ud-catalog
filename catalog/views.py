@@ -2,12 +2,13 @@ import json
 
 from catalog import app, db
 from flask_login import current_user, login_user, login_required, logout_user
-from flask import render_template, redirect, url_for, session, request
+from flask import render_template, redirect, url_for, session, request,\
+    jsonify
 from requests.exceptions import HTTPError
 
 from config import Auth
-from catalog.helpers import get_google_auth
-from catalog.models import User
+from catalog.helpers import get_google_auth, categories_to_json
+from catalog.models import User, Category
 
 
 @app.route('/')
@@ -18,6 +19,12 @@ def index():
 @app.errorhandler(404)
 def page_not_found(error):
     return '404. This page does not exist', 404
+
+
+@app.route('/catalog.json')
+def get_catalog():
+    catalog = Category.query.all()
+    return jsonify(categories_to_json(catalog))
 
 
 @app.route('/login')
