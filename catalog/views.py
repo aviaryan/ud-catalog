@@ -95,6 +95,21 @@ def save_item(item_id):
     return redirect(url_for('index'))
 
 
+@login_required
+@app.route('/catalog/<category>/<item_id>/delete', methods=['GET', 'POST'])
+def delete_item(category, item_id):
+    if request.method == 'GET':
+        item = Item.query.get(int(item_id))
+        return render_template(
+            'item_delete.html', item=item, target_url=url_for(
+                'delete_item', category=category, item_id=item.id
+            ))
+    else:
+        Item.query.filter(Item.id == int(item_id)).delete()
+        db.session.commit()
+        return redirect(url_for('index'))
+
+
 # ##########
 # AUTH VIEWS
 # ##########

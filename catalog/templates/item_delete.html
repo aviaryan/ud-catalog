@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Delete {{ item.title }}</h1>
+<p>Are you sure you want to go ahead with this?</p>
+
+<form action="{{ target_url }}" method="POST">
+	<input type="submit" value="Yes">
+</form>
+
+{% endblock %}
