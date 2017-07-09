@@ -46,7 +46,7 @@ def load_user(user_id):
 
 @login_manager.unauthorized_handler
 def unauthorized():
-    return render_template('unauthorized.html')
+    return render_template('unauthorized.html', not_logged_in=True)
 
 
 @app.before_request

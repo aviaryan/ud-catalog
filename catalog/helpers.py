@@ -1,6 +1,7 @@
 from requests_oauthlib import OAuth2Session
+from flask_login import current_user
 from config import Auth
-from catalog.models import Category
+from catalog.models import Category, Item
 
 
 def get_google_auth(state=None, token=None):
@@ -48,3 +49,11 @@ def get_category_list():
     get_category_list returns list of categories
     """
     return [c.name for c in Category.query.all()]
+
+
+def is_not_authorized(item_id):
+    """
+    is_not_authorized checks if user is not authorized to access a page
+    """
+    item = Item.query.get(int(item_id))
+    return item.user.id != current_user.id

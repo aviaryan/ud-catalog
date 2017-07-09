@@ -10,7 +10,7 @@ from requests.exceptions import HTTPError
 
 from config import Auth
 from catalog.helpers import get_google_auth, categories_to_json, \
-    get_category_list
+    get_category_list, is_not_authorized
 from catalog.models import User, Category, Item
 
 
@@ -77,6 +77,8 @@ def item_view(category, item):
 @app.route('/catalog/<category>/<item_id>/edit')
 @login_required
 def edit_item(category, item_id):
+    if is_not_authorized(item_id):
+        return render_template('unauthorized.html')
     item = Item.query.get(int(item_id))
     return render_template(
         'item_form.html', item=item, categories=Category.query.all(),
@@ -86,6 +88,8 @@ def edit_item(category, item_id):
 @app.route('/catalog/<item_id>/save', methods=['POST'])
 @login_required
 def save_item(item_id):
+    if is_not_authorized(item_id):
+        return render_template('unauthorized.html')
     form = request.form
     item = Item.query.get(int(item_id))
     item.category_id = int(form['category'])
@@ -99,6 +103,8 @@ def save_item(item_id):
 @app.route('/catalog/<category>/<item_id>/delete', methods=['GET', 'POST'])
 @login_required
 def delete_item(category, item_id):
+    if is_not_authorized(item_id):
+        return render_template('unauthorized.html')
     if request.method == 'GET':
         item = Item.query.get(int(item_id))
         return render_template(
