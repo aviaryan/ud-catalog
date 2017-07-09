@@ -2,6 +2,10 @@
 
 Udacity FSND project
 
+This full stack app allows users to login into the system and add different types of items to the database.
+Each user is the owner of the items they have added and no other user can modify those items.
+Also, no unauthenticated user has the right to make changes to the database.
+
 
 ## Running instructions
 
@@ -36,8 +40,8 @@ python manage.py runserver
 
 ## Generating Google OAuth token
 
-* Create an app on developers.google.com.
-* Click on Credentials -> OAuth token.
-* Make sure you have `http://localhost:5000` in authorized JavaScript origins and `http://localhost:5000/gCallback` in Redirect URIs.
+* Create a project on [developers.google.com](https://console.developers.google.com/).
+* Go to Credentials. Then select "Add Credentials" -> "OAuth (v2) token".
+* In the next page, make sure you have `http://localhost:5000` in authorized JavaScript origins and `http://localhost:5000/gCallback` in Redirect URIs.
 * Get your client ID and client secret.
 * Put it in `config.py`.
