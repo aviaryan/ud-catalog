@@ -32,6 +32,7 @@ def get_catalog():
     return jsonify(categories_to_json(catalog))
 
 
+@login_required
 @app.route('/new')
 def new_item():
     return render_template(
@@ -70,6 +71,28 @@ def item_view(category, item):
     title = item.replace('-', ' ')
     item = Item.query.filter(Item.title == title).first()
     return render_template('item_show.html', item=item, user=item.user)
+
+
+@login_required
+@app.route('/catalog/<category>/<item_id>/edit')
+def edit_item(category, item_id):
+    item = Item.query.get(int(item_id))
+    return render_template(
+        'item_form.html', item=item, categories=Category.query.all(),
+        target_url=url_for('save_item', item_id=item.id))
+
+
+@login_required
+@app.route('/catalog/<item_id>/save', methods=['POST'])
+def save_item(item_id):
+    form = request.form
+    item = Item.query.get(int(item_id))
+    item.category_id = int(form['category'])
+    item.title = form['title']
+    item.description = form['description']
+    db.session.add(item)
+    db.session.commit()
+    return redirect(url_for('index'))
 
 
 # ##########

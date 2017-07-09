@@ -4,4 +4,9 @@
 <p>{{ item.description }}</p>
 
 <p class="faded">Created by {{ user.name }}</p>
+
+<p>
+	{% set url = url_for('edit_item', category=item.category.name, item_id=item.id) %}
+	<a href='{{ url | replace("%20", "-") }}'>Edit</a>
+</p>
 {% endblock %}
