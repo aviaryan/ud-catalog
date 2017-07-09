@@ -32,6 +32,12 @@
 	<div class="content-2">
 	{% block content %}
 	{% endblock %}
+
+	{% if g.logged_in %}
+		<div class="faded current-user">
+			Current user: {{ g.user_email }}
+		</div>
+	{% endif %}
 	</div>
 </div>
 

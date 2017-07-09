@@ -63,5 +63,6 @@ def set_login_status():
     """
     if current_user.is_authenticated:
         g.logged_in = True
+        g.user_email = current_user.email
     else:
         g.logged_in = False

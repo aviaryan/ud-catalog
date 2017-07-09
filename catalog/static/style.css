@@ -44,10 +44,14 @@ div.content {
 }
 
 div.content-2 {
-	width: 100%;
 	height: 100%;
 	margin: 0 1.5em 0 1.5em;
 	padding: 1em 0 1.5em 0;
+}
+
+div.current-user {
+	text-align: right;
+	margin-top: 2.5em;
 }
 
 h1, h2 {
