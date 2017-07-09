@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="row">
-	<div id="left-bar">
+	<div id="left-side">
 		<h2>Categories</h2>
 		{% for c in categories %}
 		<a class="block-link">{{ c }}</a>
@@ -16,7 +16,17 @@
 	<div id="line-seg">
 	</div>
 
+	<div class="vertical-space"></div>
+	<div class="vertical-space"></div>
+
 	<div id="right-side">
+		<h2>Latest items</h2>
+		{% for i in items %}
+		<div>
+			<a href="">{{ i.title }} </a>
+			<a href="">({{ i.category.name }})</a>
+		</div>
+		{% endfor %}
 	</div>
 </div>
 

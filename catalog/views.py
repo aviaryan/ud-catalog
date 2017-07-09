@@ -3,6 +3,7 @@ from datetime import datetime
 
 from catalog import app, db
 from flask_login import current_user, login_user, login_required, logout_user
+from sqlalchemy import desc
 from flask import render_template, redirect, url_for, session, request,\
     jsonify
 from requests.exceptions import HTTPError
@@ -15,7 +16,8 @@ from catalog.models import User, Category, Item
 @app.route('/')
 def index():
     categories = [c.name for c in Category.query.all()]
-    return render_template('home.html', categories=categories)
+    items = Item.query.order_by(desc(Item.id)).limit(10).all()
+    return render_template('home.html', categories=categories, items=items)
 
 
 @app.errorhandler(404)
