@@ -2,6 +2,6 @@ import sys
 
 sys.path.insert(0, '/var/www/catalog')
 
-from catalog import app as app
+from catalog import app as application
 
-app.secret_key = 'New secret key. Change it on server'
+application.secret_key = 'New secret key. Change it on server'
